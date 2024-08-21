@@ -22,5 +22,3 @@
         @endforeach
     </section>
 @endsection
-
-
