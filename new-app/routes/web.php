@@ -22,7 +22,7 @@ Route::get('/', [BlogController::class, 'index']);
 
 Route::get('/blogesdetails/{id}', [BlogController::class, 'aboutdetails']);
 
-Route::get('/about', function() {
+Route::get('/about', function () {
 
     return view('about', [
         'blogdetails' => [
