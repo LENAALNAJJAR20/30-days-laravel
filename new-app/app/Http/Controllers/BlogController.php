@@ -13,7 +13,9 @@ class BlogController extends Controller
             'blogs' => Blog::all()
         ]);
     }
-    public function aboutdetails($id){
+
+    public function aboutdetails($id)
+    {
         $blog = Blog::find($id);
         //dd($blog);
         return view('blogesdetails', ['blog' => $blog]);
