@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 
 //use Illuminate\Support\Arr;
 use App\Models\Blog;
@@ -21,7 +22,7 @@ Route::get('/', [BlogController::class, 'index']);
 
 Route::get('/blogesdetails/{id}', [BlogController::class, 'aboutdetails']);
 
-Route::get('/about', function () {
+Route::get('/about', function() {
 
     return view('about', [
         'blogdetails' => [
@@ -36,6 +37,11 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 });
-//Route::get('/db', function () {
-//    return view('db');
-//});
+Route::get('/db', function () {
+    return view('db');
+});
+
+
+
+
+
