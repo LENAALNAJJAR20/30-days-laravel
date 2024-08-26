@@ -45,3 +45,11 @@ Route::get('/db', function () {
 
 
 
+Route::resource('news', NewsController::class);
+
+Route::get('test', function () {
+    $blog=DB::table('blog')->get();
+    return view('test', [
+        'test'=>$blog
+    ]);
+});
