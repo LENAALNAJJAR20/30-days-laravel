@@ -1,11 +1,11 @@
 <?php
 
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,6 +13,7 @@ return new class extends Migration {
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+           // $table->foreignIdFor(\App\Models\User::class);
             $table->string('title');
             $table->string('auth');
             $table->string('description');
@@ -31,4 +32,3 @@ return new class extends Migration {
         Schema::dropIfExists('blogs');
     }
 };
-
