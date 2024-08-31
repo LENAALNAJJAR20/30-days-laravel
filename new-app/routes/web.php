@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
+use App\Http\Controllers\BlogsController;
 
 //use Illuminate\Support\Arr;
 use App\Models\Blog;
@@ -44,12 +44,13 @@ Route::get('/db', function () {
 
 
 
-
-Route::resource('news', NewsController::class);
+Route::resource('Blogs', BlogsController::class);
 
 Route::get('test', function () {
-    $blog=DB::table('blog')->get();
+    $blog=DB::table('blogs')->get();
     return view('test', [
         'test'=>$blog
     ]);
 });
+
+//Route::get('/db', [BlogController::class, 'show']);

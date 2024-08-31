@@ -20,5 +20,12 @@ class BlogController extends Controller
         //dd($blog);
         return view('blogesdetails', ['blog' => $blog]);
     }
+
+//    public function show()
+//    {
+//        $name = 'Jane';
+//        $title = 'Blog title';
+//        return view('db', compact('name','title'));
+//    }
 }
 

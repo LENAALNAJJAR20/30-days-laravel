@@ -9,11 +9,14 @@
 </head>
 <body>
 <div>
-    <?php
-    if (DB::connection()->getPdo()) {
-        echo "Successfully connected to DB and DB name is " . DB::connection()->getDatabaseName();
-    }
-    ?>
+
+    <h1>Hello, {{ $name }}!</h1>
+    <h1>Hello, {{ $title }}!</h1>
+{{--    <?php--}}
+{{--    if (DB::connection()->getPdo()) {--}}
+{{--        echo "Successfully connected to DB and DB name is " . DB::connection()->getDatabaseName();--}}
+{{--    }--}}
+{{--    ?>--}}
 </div>
 </body>
 </html>
