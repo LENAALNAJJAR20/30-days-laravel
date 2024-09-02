@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 
 //use Illuminate\Support\Arr;
 use App\Models\Blog;
@@ -41,16 +42,24 @@ Route::get('/db', function () {
     return view('db');
 });
 
+Route::resource('posts', PostController::class);
+
+
+Route::get('category',[CategoryController::class, 'index'])->name('category.index');
+Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
 
-Route::resource('Blogs', BlogsController::class);
 
-Route::get('test', function () {
-    $blog=DB::table('blogs')->get();
-    return view('test', [
-        'test'=>$blog
-    ]);
-});
+//Route::get('test', function () {
+//    $blog=DB::table('blogs')->get();
+//    return view('test', [
+//        'test'=>$blog
+//    ]);
+//});
 
 //Route::get('/db', [BlogController::class, 'show']);

@@ -13,5 +13,5 @@ class Blog extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = 'blogs';
-    protected $fillable = ['image', 'title', 'auth', 'description', 'price'];
+    protected $fillable = ['image', 'category_id','title', 'auth', 'description', 'price'];
 }

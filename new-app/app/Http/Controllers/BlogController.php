@@ -21,11 +21,9 @@ class BlogController extends Controller
         return view('blogesdetails', ['blog' => $blog]);
     }
 
-//    public function show()
-//    {
-//        $name = 'Jane';
-//        $title = 'Blog title';
-//        return view('db', compact('name','title'));
-//    }
+    public function show()
+    {
+
+    }
 }
 
