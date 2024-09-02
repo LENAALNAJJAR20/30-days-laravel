@@ -32,21 +32,55 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+//    public function store(Request $request)
+//    {
+//        $request->validate([
+//
+//            'auth' => 'required',
+//            'description' => 'required|max:255',
+//            'category_id' => 'required|exists:categories,id',
+//            'price' => 'required',
+//            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//        ]);
+////        if ($request->hasFile('image')) {
+////            $image = $request->file('image');
+////            $path = $image->store('image', 'public');
+////        }
+//
+//        if ($request->hasFile('image')) {
+//            $file = $request->file('image');
+//            $fileName = time() . '.' . $file->getClientOriginalExtension();
+//            $filePath = $file->storeAs('images', $fileName, 'public');
+//
+//            // If using a model to store image information
+//            Blog::create($request->all());
+//
+//        }
+//
+//
+////        Blog::create($request->all());
+//
+//        return redirect('/');
+//    }
+
     public function store(Request $request)
     {
-        $request->validate([
-
+        $data = $request->validate([
             'auth' => 'required',
             'description' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
             'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        $data['image'] = null;
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $path = $image->store('image', 'public');
+            $file = $request->file('image');
+            $data['image'] = $file->store('image', 'public');
         }
-        Blog::create($request->all());
+
+        // Create a new Blog record, including the image path
+        Blog::create($data);
 
         return redirect('/');
     }
@@ -68,7 +102,7 @@ class PostController extends Controller
     {
         $post = Blog::findOrFail($id);
         $category = Category::all();
-        return view('posts.edit', compact('post','category'));
+        return view('posts.edit', compact('post', 'category'));
     }
 
     /**
@@ -83,7 +117,7 @@ class PostController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $post=Blog::find($id);
+        $post = Blog::find($id);
         $post->update($request->all());
         return redirect('/');
 //        return redirect()->route('')
