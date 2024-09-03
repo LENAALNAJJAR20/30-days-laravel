@@ -1,5 +1,6 @@
 @extends('components.app')
-@section('content')
+
+@section('title')
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
             <h1>Add Category</h1>
@@ -21,6 +22,7 @@
             </form>
         </div>
     </div>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -154,3 +156,4 @@
         }
     </style>
 @endsection
+

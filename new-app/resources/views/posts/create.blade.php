@@ -1,5 +1,5 @@
 @extends('components.app')
-@section('content')
+@section('title')
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
             <h1>Add Post</h1>

@@ -12,6 +12,13 @@ use Laravel\Sanctum\HasApiTokens;
 class Blog extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
+
     protected $table = 'blogs';
-    protected $fillable = ['image', 'category_id','title', 'auth', 'description', 'price'];
+    protected $fillable = ['image', 'category_id', 'title', 'auth', 'description', 'price'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+
+    }
 }
