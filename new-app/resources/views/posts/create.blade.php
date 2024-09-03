@@ -61,7 +61,8 @@
                             </defs>
                         </svg>
                         <label for="image"> Attach files</label>
-                        <input type="file" accept="image/*" name="image" id="image">
+{{--                        accept="image/*"--}}
+                        <input type="file" accept="images/*" name="image" id="image">
                         @error('image')
                         <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
                         @enderror

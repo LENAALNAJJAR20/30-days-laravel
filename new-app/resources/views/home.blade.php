@@ -56,8 +56,14 @@
             <div class="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-6 lg:grid-cols-3">
                 @foreach($posts as $blog)
                     <article class="flex flex-col dark:bg-gray-50">
+
                         <a rel="noopener noreferrer" href="/blogesdetails/{{$blog['id']}}" aria-label="Blog Details">
                             <img alt="{{ $blog['title'] }}" class="object-cover w-full h-52 dark:bg-gray-500"
+
+                        <a rel="noopener noreferrer" href="/blogesdetails/{{$blog['id']}}"
+                           aria-label="Te nulla oportere reprimique his dolorum">
+                            <img alt="" class="object-cover w-full h-52 dark:bg-gray-500"
+
                                  src="{{ Storage::url($blog['image']) }}">
                         </a>
                         <div class="flex flex-col flex-1 p-6">

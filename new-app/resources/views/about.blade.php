@@ -17,9 +17,14 @@
 
                     <!-- Image Section -->
                     <div class="mt-12 md:mt-0">
+
                         <img src="{{ Storage::url('image/dAaevN2hOTJmGMr3KDlxPCjk2ZxP6YcobCcG6MMs.jpg') }}"
                              alt="About Us Image"
                              class="object-cover rounded-lg shadow-md">
+
+                        <img src="{{ Storage::url('image/rjnk39FIQyr1zUNfvR0TUhhuvLsuH6UqXxPX8SZF.png')}}" alt="About Us Image"
+                             class="object-cover rounded-lg shadow-md" style="width: 200px">
+
                     </div>
                 </div>
             </div>
