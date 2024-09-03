@@ -1,12 +1,16 @@
 @extends('components.app')
-@section('content')
-    <p>Contact page</p>
+
+@section('title')
+    <p>Contact Page</p>
 @endsection
-@section('contantall')
+
+@section('content')
     <div class="h-screen bg-gray-800">
         <div class="pt-10 md:pt-20">
-            <div class="p-4 md:p-8" >
-                <h1 class="text-white text-center pb-8 font-light text-4xl md:text-5xl lg:text-6xl">Contact Me</h1>
+            <div class="p-4 md:p-8">
+                <h1 class="text-white text-center pb-8 font-light text-4xl md:text-5xl lg:text-6xl">
+                    Contact Me
+                </h1>
                 <form class="flex flex-col items-center">
                     <div class="md:w-3/4 lg:w-2/3 xl:w-1/2">
                         <div class="flex flex-col md:flex-row">
@@ -23,7 +27,7 @@
                                   class="my-2 py-2 px-4 rounded-md bg-gray-900 text-gray-300 w-full outline-none focus:ring-2 focus:ring-blue-600"></textarea>
                     </div>
                     <button
-                        class="border-2 text-md mt-5 rounded-md py-2 px-4  hover:bg-blue-700 text-gray-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600">
+                        class="border-2 text-md mt-5 rounded-md py-2 px-4 hover:bg-blue-700 text-gray-100 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-600">
                         Send Message
                     </button>
                 </form>
@@ -31,3 +35,4 @@
         </div>
     </div>
 @endsection
+

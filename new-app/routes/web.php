@@ -19,7 +19,7 @@ use App\Models\Blog;
 |
 */
 
-Route::get('/', [BlogController::class, 'index']);
+Route::get('/', [PostController::class, 'index']);
 
 Route::get('/blogesdetails/{id}', [BlogController::class, 'aboutdetails']);
 
