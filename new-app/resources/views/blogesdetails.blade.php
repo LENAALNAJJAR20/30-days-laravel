@@ -45,7 +45,7 @@
                     class="text-4xl font-bold tracking-tight text-white sm:text-6xl"
                     style="font-size: larger; color: cornflowerblue;"
                 >
-                    This blog is written by <span style="color: black;">{{$blog['auth']}}</span>
+                   THE DESCRIPTION
                 </h1>
                 <h6
                     class="mt-6 text-lg leading-8 text-gray-300"

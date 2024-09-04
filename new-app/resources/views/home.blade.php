@@ -68,9 +68,17 @@
                                 THE Blog Written By
                                 <span class="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
                                       style="font-size: 17px; color: #000000">
-                                    {{ $blog['auth'] }}
+                                    {{ $blog->author->name }}
                                 </span>
                             </h3>
+
+                            <h6 class="flex-1 py-2 text-lg font-semibold leading-snug">
+
+                                <span class="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
+                                      style="font-size: 17px; color: #000000">
+                                   {{ $blog->category->name }}
+                                </span>
+                            </h6>
                             <div class="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
                                 <span style="font-size: 15px">Price of product: {{ $blog['price'] }}$</span>
                             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
@@ -53,7 +54,10 @@ Route::put('categories/{category}', [CategoryController::class, 'update'])->name
 Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
-
+//Route::get('categories/create', [\App\Http\Controllers\AuthorController::class, 'create'])->name('author.create');
+//Route::post('author', [AuthorController::class, 'store'])->name('author.store');
+//Route::get('authors/{author}/edit', [AuthorController::class, 'edit'])->name('author.edit');
+//Route::put('authors/{author}', [AuthorController::class, 'update'])->name('author.update');
 
 //Route::get('test', function () {
 //    $blog=DB::table('blogs')->get();
