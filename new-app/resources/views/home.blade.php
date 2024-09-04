@@ -56,14 +56,8 @@
             <div class="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-6 lg:grid-cols-3">
                 @foreach($posts as $blog)
                     <article class="flex flex-col dark:bg-gray-50">
-
                         <a rel="noopener noreferrer" href="/blogesdetails/{{$blog['id']}}" aria-label="Blog Details">
                             <img alt="{{ $blog['title'] }}" class="object-cover w-full h-52 dark:bg-gray-500"
-
-                        <a rel="noopener noreferrer" href="/blogesdetails/{{$blog['id']}}"
-                           aria-label="Te nulla oportere reprimique his dolorum">
-                            <img alt="" class="object-cover w-full h-52 dark:bg-gray-500"
-
                                  src="{{ Storage::url($blog['image']) }}">
                         </a>
                         <div class="flex flex-col flex-1 p-6">
@@ -71,10 +65,11 @@
                                 {{ $blog['title'] }}
                             </h5>
                             <h3 class="flex-1 py-2 text-lg font-semibold leading-snug">
-                                THE Blog Written By <span class="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
-                                                          style="font-size: 17px; color: #000000">
-                                {{ $blog['auth'] }}
-                            </span>
+                                THE Blog Written By
+                                <span class="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
+                                      style="font-size: 17px; color: #000000">
+                                    {{ $blog['auth'] }}
+                                </span>
                             </h3>
                             <div class="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
                                 <span style="font-size: 15px">Price of product: {{ $blog['price'] }}$</span>
@@ -83,7 +78,7 @@
                     </article>
                 @endforeach
             </div>
-            {{-- {{$posts->links()}} --}}
+             {{$posts->links()}}
         </div>
     </section>
 @endsection
