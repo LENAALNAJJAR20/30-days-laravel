@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -16,9 +17,10 @@ class PostController extends Controller
         if ($categoryId) {
             $posts = Blog::where('category_id', $categoryId)->with('category')->paginate(3);
         } else {
-//         $posts = Blog::with('category')->get();
+
             $posts = Blog::with('category')->paginate(3);
         }
+
         return view('home', compact('posts','categories'));
 
     }
@@ -26,17 +28,19 @@ class PostController extends Controller
 
     public function create()
     {
+        $author=Author::all();
         $category = Category::all();
-        return view('posts.create', compact('category'));
+        return view('posts.create', compact('category','author'));
     }
 
-    
+
     public function store(Request $request)
     {
         $data = $request->validate([
-            'auth' => 'required',
+//            'auth' => 'required',
             'description' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
+            'author_id' => 'required|exists:authors,id',
             'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -46,12 +50,6 @@ class PostController extends Controller
             $file = $request->file('image');
             $data['image'] = $file->store('image', 'public');
         }
-
-
-        // Create a new Blog record, including the image path
-        Blog::create($data);
-
-
         // Create a new Blog record, including the image path
         Blog::create($data);
         return redirect('/');
@@ -75,9 +73,10 @@ class PostController extends Controller
     {
         // Validate the request
         $data = $request->validate([
-            'auth' => 'required',
+//            'auth' => 'required',
             'description' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
+            'author_id' => 'required|exists:authors,id',
             'price' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

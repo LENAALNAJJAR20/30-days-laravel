@@ -17,14 +17,7 @@
                     @error('title')
                     <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
                     @enderror
-                    <div>
-                        <input
-                            type="text" name="auth" id="auth" value="{{ old('auth') }}" class="formbold-form-input"/>
-                        @error('auth')
-                        <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
-                        @enderror
-                        <label for="auth" class="formbold-form-label"> Auth </label>
-                    </div>
+
                 </div>
                 <div class="formbold-input-flex">
                     <div>
@@ -35,6 +28,21 @@
                         @enderror
                         <label for="price" class="formbold-form-label"> Price </label>
                     </div>
+
+                    <div class="formbold-input-flex">
+                        <div>
+                            <select type="text" name="author_id" class="formbold-form-input">
+                                @foreach($author as $auth)
+                                    <option value="{{$auth['id']}}">{{$auth['name']}} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        </div>
+
+
+
+
+
                 </div>
                 <div class="formbold-textarea">
                 <textarea rows="6" name="description" id="description" value="{{ old('description') }}"
