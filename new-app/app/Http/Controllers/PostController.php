@@ -10,20 +10,27 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
 
-        public function index(Request $request)
+    public function index(Request $request)
     {
-        $categoryId = $request->input('category');
+        $categorySlug = $request->input('category');
         $categories = Category::all();
-        if ($categoryId) {
-            $posts = Blog::where('category_id', $categoryId)->with('category')->paginate(3);
-        } else {
 
+        if ($categorySlug) {
+            $category = Category::where('slug', $categorySlug)->first();
+
+            if ($category) {
+                $posts = Blog::where('category_id', $category->id)->with('category')->paginate(3);
+            } else {
+                $posts = Blog::with('category')->paginate(3);
+            }
+        } else {
             $posts = Blog::with('category')->paginate(3);
         }
 
-        return view('home', compact('posts','categories'));
-
+        return view('home', compact('posts', 'categories'));
     }
+
+
 
 
     public function create()

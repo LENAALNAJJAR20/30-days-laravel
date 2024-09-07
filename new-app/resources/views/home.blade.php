@@ -14,13 +14,9 @@
                         </button>
                     </li>
                     @foreach($categories as $category)
-                        <li>
-                            <button type="submit" name="category" value="{{ $category->id }}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
-                                {{ $category->name }}
-                            </button>
-                        </li>
-                        <hr>
+                        <a href="{{ route('posts.index', ['category' => $category->slug]) }}"  class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">{{ $category->name }}</a>
                     @endforeach
+
                 </ul>
             </div>
         </div>
