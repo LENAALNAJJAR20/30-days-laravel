@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
@@ -46,18 +47,15 @@ Route::get('/db', function () {
 Route::resource('posts', PostController::class);
 
 
-Route::get('category',[CategoryController::class, 'index'])->name('category.index');
-Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
-Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+    Route::get('category', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('category', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
-//Route::get('categories/create', [\App\Http\Controllers\AuthorController::class, 'create'])->name('author.create');
-//Route::post('author', [AuthorController::class, 'store'])->name('author.store');
-//Route::get('authors/{author}/edit', [AuthorController::class, 'edit'])->name('author.edit');
-//Route::put('authors/{author}', [AuthorController::class, 'update'])->name('author.update');
 
 //Route::get('test', function () {
 //    $blog=DB::table('blogs')->get();
@@ -67,3 +65,12 @@ Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->
 //});
 
 //Route::get('/db', [BlogController::class, 'show']);
+
+//auth
+//Route::middleware(['auth:author'])->group(function () {
+Route::get('/register', [RegisteredUserController::class, 'create']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy']);
+//});
