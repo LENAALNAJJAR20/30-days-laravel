@@ -22,8 +22,8 @@
                              alt="About Us Image"
                              class="object-cover rounded-lg shadow-md">
 
-                        <img src="{{ Storage::url('image/rjnk39FIQyr1zUNfvR0TUhhuvLsuH6UqXxPX8SZF.png')}}" alt="About Us Image"
-                             class="object-cover rounded-lg shadow-md" style="width: 200px">
+{{--                        <img src="{{ Storage::url('image/rjnk39FIQyr1zUNfvR0TUhhuvLsuH6UqXxPX8SZF.png')}}" alt="About Us Image"--}}
+{{--                             class="object-cover rounded-lg shadow-md" style="width: 200px">--}}
 
                     </div>
                 </div>
