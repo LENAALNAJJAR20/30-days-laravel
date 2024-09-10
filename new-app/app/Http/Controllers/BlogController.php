@@ -20,9 +20,9 @@ class BlogController extends Controller
         return view('blogesdetails', ['blog' => $blog]);
     }
 
-    public function show()
-    {
-
-    }
+//    public function show()
+//    {
+//
+//    }
 }
 

@@ -21,56 +21,49 @@ use App\Models\Blog;
 |
 */
 
-Route::get('/', [PostController::class, 'index']);
+    Route::get('/', [PostController::class, 'index']);
 
-Route::get('/blogesdetails/{id}', [BlogController::class, 'aboutdetails']);
+    Route::get('/blogesdetails/{id}', [BlogController::class, 'aboutdetails']);
 
-Route::get('/about', function () {
+    Route::get('/about', function () {
 
-    return view('about', [
-        'blogdetails' => [
-            [
-                'description' => 'Smart technology refers to a range of advanced systems and devices that utilize digital connectivity, sensors, and artificial intelligence to improve efficiency, enhance functionality, and offer greater convenience. These technologies are characterized by their ability to collect and analyze data, make autonomous decisions, and adapt to user preferences or environmental changes.',
-                'image' => 'image81.jpg',
+        return view('about', [
+            'blogdetails' => [
+                [
+                    'description' => 'Smart technology refers to a range of advanced systems and devices that utilize digital connectivity, sensors, and artificial intelligence to improve efficiency, enhance functionality, and offer greater convenience. These technologies are characterized by their ability to collect and analyze data, make autonomous decisions, and adapt to user preferences or environmental changes.',
+                    'image' => 'image81.jpg',
+                ]
             ]
-        ]
-    ]);
-});
+        ]);
+    });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/db', function () {
-    return view('db');
-});
+    Route::get('/contact', function () {
+        return view('contact');
+    });
+    Route::get('/db', function () {
+        return view('db');
+    });
 
-Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class)->middleware('auth');
 
 
 
     Route::get('category', [CategoryController::class, 'index'])->name('category.index');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('category', [CategoryController::class, 'store'])->name('category.store');
-    Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit')
+        ->middleware('auth')
+        ->can('category.edit','category');
     Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy')
+        ->middleware('auth')
+        ->can('delete-category','category');
 
-
-
-//Route::get('test', function () {
-//    $blog=DB::table('blogs')->get();
-//    return view('test', [
-//        'test'=>$blog
-//    ]);
-//});
-
-//Route::get('/db', [BlogController::class, 'show']);
-
-//auth
-//Route::middleware(['auth:author'])->group(function () {
-Route::get('/register', [RegisteredUserController::class, 'create']);
-Route::post('/register', [RegisteredUserController::class, 'store']);
-Route::get('/login', [SessionController::class, 'create']);
-Route::post('/login', [SessionController::class, 'store']);
-Route::post('/logout', [SessionController::class, 'destroy']);
-//});
+    //auth
+    //Route::middleware(['auth:author'])->group(function () {
+    Route::get('/register', [RegisteredUserController::class, 'create']);
+    Route::post('/register', [RegisteredUserController::class, 'store']);
+    Route::get('/login', [SessionController::class, 'create'])->name('login');
+    Route::post('/login', [SessionController::class, 'store']);
+    Route::post('/logout', [SessionController::class, 'destroy']);
+    //});

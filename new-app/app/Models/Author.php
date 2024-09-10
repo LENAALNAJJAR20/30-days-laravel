@@ -17,12 +17,5 @@ class Author extends Authenticatable
     {
         return $this->hasMany(Blog::class);
     }
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password'=>'hashed'
-    ];
+
 }

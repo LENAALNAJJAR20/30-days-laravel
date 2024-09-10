@@ -31,17 +31,10 @@
 
                     <div class="formbold-input-flex">
                         <div>
-                            <select type="text" name="author_id" class="formbold-form-input">
-                                @foreach($author as $auth)
-                                    <option value="{{$auth['id']}}">{{$auth['name']}} </option>
-                                @endforeach
-                            </select>
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+
                         </div>
                         </div>
-
-
-
-
 
                 </div>
                 <div class="formbold-textarea">

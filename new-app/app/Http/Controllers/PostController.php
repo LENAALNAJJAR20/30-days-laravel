@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Author;
+
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
 
@@ -26,28 +28,23 @@ class PostController extends Controller
         } else {
             $posts = Blog::with('category')->paginate(3);
         }
-
         return view('home', compact('posts', 'categories'));
     }
 
-
-
-
     public function create()
     {
-        $author=Author::all();
+        $user = User::all();
         $category = Category::all();
-        return view('posts.create', compact('category','author'));
+        return view('posts.create', compact('category','user'));
     }
 
 
     public function store(Request $request)
     {
         $data = $request->validate([
-//            'auth' => 'required',
             'description' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
-            'author_id' => 'required|exists:authors,id',
+            'user_id' => 'required|exists:users,id',
             'price' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -57,11 +54,9 @@ class PostController extends Controller
             $file = $request->file('image');
             $data['image'] = $file->store('image', 'public');
         }
-        // Create a new Blog record, including the image path
         Blog::create($data);
         return redirect('/');
     }
-
 
     public function show($id)
     {
@@ -72,46 +67,42 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Blog::findOrFail($id);
+                 //for GATE
+//       Gate::authorize('edit-post', $post);
+             // for policies
+        Gate::authorize('edit', $post);
         $category = Category::all();
         return view('posts.edit', compact('post', 'category'));
     }
+
 
     public function update(Request $request, $id)
     {
         // Validate the request
         $data = $request->validate([
-//            'auth' => 'required',
             'description' => 'required|max:255',
             'category_id' => 'required|exists:categories,id',
-            'author_id' => 'required|exists:authors,id',
+            'user_id' => 'required|exists:users,id',
             'price' => 'required',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-
         // Find the blog post
         $post = Blog::find($id);
-
-        // Check if a new image file has been uploaded
+        $data['image'] = null;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-            // Store the new image and set the path in $data
             $data['image'] = $file->store('image', 'public');
-        } else {
-            // If no new image is uploaded, keep the existing image
-            $data['image'] = $post->image;
         }
         $post->update($data);
-
-        $post = Blog::find($id);
-        $post->update($request->all());
-
         return redirect('/');
     }
 
     public function destroy($id)
     {
         $post = Blog::findOrFail($id);
+                //for GATE
+        Gate::authorize('delete-post', $post);
         $post->delete();
         return redirect('/');
     }
