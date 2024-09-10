@@ -11,7 +11,7 @@
 
                 <div class="formbold-input-flex">
                     <div>
-                        <label for="category_id" class="formbold-form-label">Category</label>
+{{--                        <label for="category_id" class="formbold-form-label">Category</label>--}}
                         <select name="category_id" id="category_id" class="formbold-form-input">
                             @foreach($category as $categ)
                                 <option value="{{ $categ['id'] }}" {{ $post->category_id == $categ['id'] ? 'selected' : '' }}>
@@ -22,15 +22,7 @@
                     </div>
                 </div>
 
-                <div class="formbold-input-flex">
-                    <div>
-                        <input type="text" name="auth" id="auth" value="{{ old('auth', $post->auth) }}" class="formbold-form-input"/>
-                        @error('auth')
-                        <div style="color: red; font-weight: bold; font-size: 13px">{{ $message }}</div>
-                        @enderror
-                        <label for="auth" class="formbold-form-label">Auth</label>
-                    </div>
-                </div>
+                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
 
                 <div class="formbold-input-flex">
                     <div>

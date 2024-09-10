@@ -64,7 +64,7 @@
                                 THE Blog Written By
                                 <span class="text-xs tracking-wider uppercase hover:underline dark:text-violet-600"
                                       style="font-size: 17px; color: #000000">
-                                    {{ $blog->author->name }}
+                                    {{ $blog->user->firstname }}
                                 </span>
                             </h3>
 

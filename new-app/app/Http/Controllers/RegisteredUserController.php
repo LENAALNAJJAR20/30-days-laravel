@@ -26,6 +26,7 @@ class RegisteredUserController extends Controller
 //     dd($attributes);
        $user = User::create($attributes);
        Auth::login($user);
-       return redirect('/');
+       return redirect('/login');
+
     }
 }

@@ -11,8 +11,8 @@ class CategoryController extends Controller
     {
         $category = Category::all();
         return view('category', compact('category'));
-
     }
+
     public function create()
     {
         $category = Category::all();
@@ -22,13 +22,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'name' => 'required',
         ]);
         Category::create($request->all());
 
         return redirect('category');
     }
+
     public function edit(Category $category)
     {
 

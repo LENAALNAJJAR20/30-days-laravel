@@ -14,7 +14,7 @@ class Blog extends Model
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'blogs';
-    protected $fillable = ['image', 'category_id','author_id','status','title', 'auth', 'description', 'price'];
+    protected $fillable = ['image', 'category_id','user_id','status','title', 'auth', 'description', 'price'];
 
     public function category()
     {
@@ -22,8 +22,8 @@ class Blog extends Model
 
     }
 
-    public function author()
+    public function user()
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(User::class);
     }
 }

@@ -14,14 +14,11 @@
             src="{{ Storage::url('image/7AGdsBnBjneLjiZ3phnd70GrUgkCf6NUPJv5MYY2.jpg') }}"
             class="absolute inset-0 -z-10 h-full w-full object-cover object-right md:object-center"
             style="width: 1400px; height: 750px;"
-            alt="Background Image"
-        >
-
+            alt="Background Image">
         <!-- Decorative Elements -->
         <div
             class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
-            aria-hidden="true"
-        >
+            aria-hidden="true">
             <div
                 class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
@@ -30,8 +27,7 @@
 
         <div
             class="absolute -top-52 left-1/2 -z-10 -translate-x-1/2 transform-gpu blur-3xl sm:top-[-28rem] sm:ml-16 sm:translate-x-0 sm:transform-gpu"
-            aria-hidden="true"
-        >
+            aria-hidden="true">
             <div
                 class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-20"
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"
@@ -43,14 +39,12 @@
             <div class="mx-auto max-w-2xl lg:mx-0">
                 <h1
                     class="text-4xl font-bold tracking-tight text-white sm:text-6xl"
-                    style="font-size: larger; color: cornflowerblue;"
-                >
+                    style="font-size: larger; color: cornflowerblue;">
                    THE DESCRIPTION
                 </h1>
                 <h6
                     class="mt-6 text-lg leading-8 text-gray-300"
-                    style="color: black;"
-                >
+                    style="color: black;">
                     This technology is {{$blog['description']}}
                 </h6>
             </div>
@@ -58,6 +52,8 @@
 
         <!-- Action Buttons -->
         <div class="relative flex p-10 justify-center top-40">
+
+{{--            @can('edit-post',$blog)--}}
             <div class="pr-10">
                 <a href="{{ route('posts.edit', $blog->id) }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" style="width: 30px;">
@@ -65,7 +61,9 @@
                     </svg>
                 </a>
             </div>
+{{--            @endcan--}}
             <div>
+{{--                @can('delete-post',$blog)--}}
                 <form action="{{ route('posts.destroy', $blog->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
@@ -75,6 +73,7 @@
                         </svg>
                     </button>
                 </form>
+{{--                @endcan--}}
             </div>
         </div>
     </div>
