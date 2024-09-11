@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 
+use App\Mail\BlogPosted;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
+
 class PostController extends Controller
 {
 
@@ -55,6 +58,13 @@ class PostController extends Controller
             $data['image'] = $file->store('image', 'public');
         }
         Blog::create($data);
+        $user = Auth::user(); // Get the authenticated user
+        if ($user) {
+            Mail::to($user->email)->queue(
+                new BlogPosted($data)
+            );
+        }
+
         return redirect('/');
     }
 

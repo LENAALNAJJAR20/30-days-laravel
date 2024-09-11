@@ -18,10 +18,15 @@ class Category extends Model
             ]
         ];
     }
-    protected $fillable = ['name','slug'];
+    protected $fillable = ['name','user_id','slug'];
 
     public function blog()
     {
         return $this->hasMany(Blog::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
     }

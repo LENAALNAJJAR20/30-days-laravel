@@ -23,6 +23,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'user_id' => 'required|exists:users,id',
         ]);
         Category::create($request->all());
 
@@ -39,6 +40,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'user_id' => 'required|exists:users,id',
 
         ]);
 

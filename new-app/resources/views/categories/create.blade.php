@@ -15,7 +15,9 @@
                         @enderror
                         <label for="name" class="formbold-form-label"> name </label>
                     </div>
+
                 </div>
+                <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                 <button class="formbold-btn">
                     Add Category
                 </button>

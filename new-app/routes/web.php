@@ -43,17 +43,18 @@ use App\Models\Blog;
     Route::get('/db', function () {
         return view('db');
     });
-
+   // Blogs
     Route::resource('posts', PostController::class)->middleware('auth');
 
 
-
+  //categories
     Route::get('category', [CategoryController::class, 'index'])->name('category.index');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('category', [CategoryController::class, 'store'])->name('category.store');
     Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit')
         ->middleware('auth')
-        ->can('category.edit','category');
+        ->can('edit-category','category');
+
     Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy')
         ->middleware('auth')
@@ -67,3 +68,10 @@ use App\Models\Blog;
     Route::post('/login', [SessionController::class, 'store']);
     Route::post('/logout', [SessionController::class, 'destroy']);
     //});
+
+//Route::get('test', function () {
+//   \Illuminate\Support\Facades\Mail::to('lena@gmail.com')->send(
+//        new \App\Mail\BlogPosted()
+//    );
+//      return 'Done';
+//});
